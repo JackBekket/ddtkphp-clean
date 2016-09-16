@@ -1,0 +1,85 @@
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .section {
+      margin: 20px;
+    }
+    button {
+      padding: 5px 16px;
+      border-radius: 4px;
+    }
+    button#changeQuota { background-color: yellow; }
+    button#transfer { }
+
+    button#buyTicket { background-color: #98fb98; }
+    button#refundTicket { background-color: pink; }
+
+
+  </style>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+
+
+<link href='./app.css' rel='stylesheet' type='text/css'>
+
+<script type='text/javascript' src='./app.js'></script>
+
+
+
+
+
+
+
+</head>
+<body>
+<div class='section'><h2>Введите данные</h2></br><input type='text' id='#f1'/></br><select required id='#opt'><option value='1'>*</option><option value='2'>/</option><option value='3'>+</option><option value='4'>-</option></select></br><input type='text' id='#f2'></br><button id='#exec'>Отправить данные</button><span id='#res'></span></br><script type='text/javascript' >
+
+$(document).ready(function () {
+
+console.log('test inner');
+
+$('#res').html('Whoa!');
+
+$('#exec').click(function() {
+    var f1 = $('#f1').val();
+    var f2 = $('#f2').val();
+    var opr = $('#opr');
+    Calc(f1,f2,opr);
+    console.log('test click');
+  });
+
+function Calc()
+{
+
+  console.log(f1);
+  console.log(f2);
+  console.log(opr);
+
+  $.post(
+  '/process.php',
+  {
+      f1 : f1,
+      f2 : f2,
+      opr : opr
+  },
+  onAjaxSuccess
+
+  );
+  function onAjaxSuccess (data) {
+
+      var r=data;
+      console.log(data);
+      result=r.result;
+      console.log(result);
+  }
+}
+
+});
+
+
+
+
+</script>
+</body>
+</html>
+

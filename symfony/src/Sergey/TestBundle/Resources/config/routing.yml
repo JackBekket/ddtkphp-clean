@@ -1,0 +1,6 @@
+sergey_test_homepage:
+    path:     /
+    defaults: { _controller: SergeyTestBundle:Default:index }
+sergey_test_f:
+  path: /f
+  defaults: { _controller: SergeyTestBundle:Default:new }

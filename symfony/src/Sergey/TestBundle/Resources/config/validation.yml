@@ -1,0 +1,13 @@
+
+Sergey\TestBundle\Entity\Task:
+    properties:
+        f1:
+            - NotBlank: ~
+
+        type:
+            - NotBlank: ~
+            - Choice: { callback: getTypeValues }
+
+        f2:
+          - NotBlank: ><0
+          
