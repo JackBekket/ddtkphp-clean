@@ -1,8 +1,0 @@
-sergey_task_homepage:
-    path:     /
-    defaults: { _controller: SergeyTaskBundle:Default:index }
-
-sergey_task_ariphmetics:
-   path: /task_new
-
-   defaults: { _controller: SergeyTaskBundle:Default:new}
