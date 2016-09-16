@@ -1,9 +1,0 @@
-Thu Sep  8 03:47:18 2016 [5192][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 03:47:19 2016 [5192][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 03:47:30 2016 [5248][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 03:47:40 2016 [5249][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 03:47:40 2016 [5249][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 03:50:28 2016 [5250][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 04:02:47 2016 [5190][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 04:02:49 2016 [5244][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
-Thu Sep  8 04:04:54 2016 [5191][-none-][FATAL] Configuration variable date.timezone is not set, guessed timezone America/Los_Angeles. Please set date.timezone="America/Los_Angeles" in php.ini!
