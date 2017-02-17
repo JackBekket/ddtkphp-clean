@@ -8,3 +8,5 @@ Control php system allow to connect ethereum token function with standart functi
 For example, this project allow to automatically proceed all transaction requests from MySQL throw Ethereum node, check it and write results in database, including updating of balance and tasks.
 
 This is example usage project and has no any security patch. Do not use it as is, integrate it in your system.
+
+# This version is deprecated and will be rewritten. Do not use.
