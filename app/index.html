@@ -59,12 +59,7 @@
        <hr/>
        <h2>Количество выпущенных монет</h2> </br>
      <h3> <span id="totalSup"></span>  DDT</h3></br>
-    <h2> Балансы аккаунтов (для теста)</h2></br>
-    <tr>
-      <td><span id="bal1"></span> DDT </td>
-      <td><span id="bal2"></span> DDT </td>
-      <td><span id="bal3"></span> DDT </td>
-    </tr>
+
 
 
      <hr/>
@@ -73,7 +68,7 @@
 
 
   <div class="section">
-     <h2>Ваш баланс</h2>
+     <h2>Ваш баланс (баланс кошелька с которого отправляются средства.)</h2>
      <hr/>
    <h3>У вас  <span id="balance"></span>  DDT</h3>
    <hr/>
@@ -89,7 +84,9 @@
     <hr/>
 
     <div class="section">
-       <h2>Отправить деньги</h2>
+       <h2>Отправить деньги</h2> </br>
+       Здесь можно кому-то перевести деньги вручную.
+     </br>
        Сумма перевода <input type="text" id="transfer_am" value="10" />
          Кому <input type="text" id="transfer_to" />
          <button id="transfer">Перевести</button>
@@ -97,6 +94,8 @@
      </div>
      <hr/>
 
+
+<!--
      <div class="section">
         <h2>Выпустить деньги</h2>
         Сумма эмиссии <input type="text" id="mint_am" value="10" /> </br>
@@ -105,7 +104,7 @@
           <span id="mint_result"></span>
       </div>
       <hr/>
-
+-->
 
 <!--
  <div class="section">
@@ -118,30 +117,32 @@
   <hr/>
 -->
 
+<!--
+<div class="section">
+   <h2> Заявки</h2>
+    CPID (подхвачивается автоматически из сессии) <input type="text" id="cpid" value="12342354" /> </br>
+   Количество к выводу <input type="text" id="out_am" value="1" /> </br>
+     <button id="ProcTask">Добавить получателя</button>
+     <span id="TaskResult"></span>
+</br>
 
+ </div>
 
-<!--  <div class="section">
-   <h2>Buy a Ticket</h2>
-    Ticket Price: <input type="text" id="ticketPrice" value="0.05" />
-      Buyer Address: <input type="text" id="buyerAddress" />
-      <button id="buyTicket">Buy Ticket</button>
-      <span id="buyTicketResult"></span>
-  </div>
-
-  <hr/>
- -->
+ <hr/>
+-->
 
 
  <div class="section">
-    <h2>Получить запросы</h2>
-
-      <button id="GetRequest">Добавить получателя</button>
-      <span id="GetRequestResult1"></span>
+    <h2> Провести все транзакции</h2>
+    <!--
+     CPID (подхвачивается автоматически из сессии) <input type="text" id="cpid" value="12342354" /> </br>
+    Количество к выводу <input type="text" id="out_am" value="1" /> </br>
+  -->
+      <button id="ProcAll">Добавить получателя</button>
+      <span id="AllResult"></span>
  </br>
-      <span id="GetRequestResult2"></span>
-  </div>
 
-  <hr/>
+  </div>
 
 
 
