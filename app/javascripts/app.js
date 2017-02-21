@@ -20,18 +20,18 @@ var contract = require("truffle-contract");
 var SimpleToken = contract(json);
 
 // Step 3: Provision the contract with a web3 provider
-//EscrowAdvansed.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+//SimpleToken.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
 /**
 // Step 4: Use the contract!
-EscrowAdvansed.deployed().then(function(deployed) {
+SimpleToken.deployed().then(function(deployed) {
   return deployed.someFunction();
 });
 **/
 
 
 
-
+// var token = MyAdvancedToken.at(MyAdvancedToken.deployed_address);
 
 
 // The following code is simple to show off interacting with your contracts.
@@ -40,12 +40,27 @@ EscrowAdvansed.deployed().then(function(deployed) {
 var accounts;
 var account;
 
+var balance;
+// var tokend;
+ var MyTokenInstance;
+
+ var senderWei;
+ var recipientWei;
+
+ var deci;
+
+ var am_root;
+ var mroot;
+
+
+
+
 window.App = {
   start: function() {
     var self = this;
 
     // Bootstrap the MetaCoin abstraction for Use.
-    MetaCoin.setProvider(web3.currentProvider);
+    SimpleToken.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
 
     // Get the initial account balance so it can be displayed.
     web3.eth.getAccounts(function(err, accs) {
@@ -61,6 +76,14 @@ window.App = {
 
       accounts = accs;
       account = accounts[0];
+
+
+      SimpleToken.deployed().then(function(instance) {
+        MyTokenInstance=instance;
+        });
+        
+      $("#transfer_to").val(accounts[1]);
+
 
   //    self.refreshBalance();
     });
@@ -134,55 +157,13 @@ window.addEventListener('load', function() {
 });
 
 // old dummy:
-var accounts;
-var account;
-var balance;
-// var tokend;
- var MyTokenInstance;
 
- var senderWei;
- var recipientWei;
-
- var deci;
-
- var am_root;
- var mroot;
 
 
 window.onload = function() {
-// Setting up web3 providers
-  var Web3 = require('web3');
-  // create an instance of web3 using the HTTP provider.
-  // NOTE in mist web3 is already available, so check first if its available before instantiating
-  //var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-  //var web3= new Web3();
 
 
-  if (typeof web3 !== 'undefined') {
-    web3 = new Web3(web3.currentProvider);
-  } else {
-    // set the provider you want from Web3.providers
-    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-  }
 
-  //Get Accounts
-  web3.eth.getAccounts(function(err, accs) {
-    if (err != null) {
-      alert("There was an error fetching your accounts.");
-      return;
-    }
-
-    if (accs.length == 0) {
-      alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
-      return;
-    }
-
-    accounts = accs;
-    account = accounts[0];
-
-
- $("#transfer_to").val(accounts[1]);
-$("#mint_to").val(accounts[0]);
 
 
     //Get address
@@ -201,7 +182,7 @@ console.log(myTokenInstance);
 
 
 //Set deci
-deci=3;
+deci=18;
 
 //Set rules of transform numbers
 DeciPow(deci);
@@ -215,8 +196,7 @@ DeciPow(deci);
    //refresh Balance
     refreshBalance();
 
-//refresh All Balance
-// refreshAllBalance ();
+
 
 
 //deci = myTokenInstance.decimals.call();
@@ -239,12 +219,7 @@ DeciPow(deci);
 
 //
 
-   $("#mint").click(function(){
-     var val = $("#mint_am").val();
-     val=transformIn(val);
-     var to = $("#mint_to").val();
-     mintCoin(to, val);
-   });
+
 
 
 //  var tokenDecl=
@@ -328,26 +303,7 @@ function difBalance(nacc, numa){
  });
 }
 
-function refreshAllBalance(){
-for(var i=0;i<3;i++){
-  myTokenInstance.getBalance.call(accounts[i], {from: account}).then(function(value) {
-    // be = balance_element
- var be=value.valueOf();
- var numa= "#bal".i;
- console.log(numa);
- $(numa).html(be);
- //console.log(value);
- //console.log(be);
- }).catch(function(e){
- console.log(e);
- setStatus("Error getting balance; see log.");
 
- });
-}
-
-
-
-}
 
 function totalSup(){
 var msg="Инициализация";
