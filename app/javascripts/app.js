@@ -77,16 +77,47 @@ window.App = {
       accounts = accs;
       account = accounts[0];
 
+        $("#transfer_to").val(accounts[1]);
 
-      SimpleToken.deployed().then(function(instance) {
-        MyTokenInstance=instance;
-        });
-        
-      $("#transfer_to").val(accounts[1]);
 
 
   //    self.refreshBalance();
+
+
+
     });
+
+
+    SimpleToken.deployed().then(function(instance) {
+      MyTokenInstance=instance;
+      });
+
+
+
+
+      $("#tokdAddress").html(SimpleToken.deployed_address);
+
+      console.log(myTokenInstance);
+      console.log(SimpleToken.deployed_address);
+
+
+      //Set deci
+      deci=18;
+
+      //Set rules of transform numbers
+      DeciPow(deci);
+
+          //Check Values
+        //  checkValues();
+
+          //Check Total Supply
+          totalSup();
+
+         //refresh Balance
+          refreshBalance();
+
+
+
   },
 
   setStatus: function(message) {
@@ -159,7 +190,7 @@ window.addEventListener('load', function() {
 // old dummy:
 
 
-
+/**
 window.onload = function() {
 
 
@@ -169,10 +200,7 @@ window.onload = function() {
     //Get address
       var token = MyAdvancedToken.at(MyAdvancedToken.deployed_address);
 
-// var token = MyAdvancedToken.at(0xe2df825a4f1e8c7f40d4bb2fa90654cb368597ba);
 
-    //  console.log(MyAdvancedToken.deployed_address);
-      //console.log(token);
     //Set adress of deployed contract
     $("#tokdAddress").html(MyAdvancedToken.deployed_address);
     //Creating instance
@@ -206,6 +234,9 @@ DeciPow(deci);
 
    });
 //
+**/
+
+
 
     //Warmig up UI
     $("#transfer").click(function() {
