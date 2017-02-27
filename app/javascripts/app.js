@@ -233,15 +233,45 @@ sendToken: function () {
     });
 },
 
+sendTokVal: function (to,val) {
+  var self=this;
+//  var pos="#transfer_result";
+  var instance;
+  var msg;
+  var tok;
+//  var amnt;
+//  val=web3.toWei(val);
+//  to=web3.toWei(val);
+
+
+  Token.deployed().then(function(instance){
+    tok=instance;
+//    msg="Wait..";
+
+     return tok.transfer(to, val, {from: account})
+   }).then(function (tx) {
+        console.log("tx:");
+        console.log(tx);
+    //    msg="Transaction complete";
+    //    self.setStatusPos(pos,msg);
+    //    self.refreshAddress();
+  }).catch(function(e) {
+      console.log(e);
+
+  //   msg="Ошибка при отправке, смотри консоль";
+  //   setStatusPos(pos,msg);
+    });
+},
+
 getAll: function () {
 
   var self=this;
   var pos="#AllResult";
   var instance;
-  var msg="waiting..";
+  var msg="getting data..";
   var tok;
 
-
+  self.setStatusPos(pos,msg);
 
 //
   const options = {
@@ -263,31 +293,53 @@ getAll: function () {
     var obj_name = res.Jobs;
     var arr
     arr=obj_name.object_name;
-
+      msg="parsing...";
      self.setStatusPos(pos,msg);
 
      var count=0;
 
      async.forEach(arr, function (item, callback){
-    console.log(item); // print the key
+  //  console.log(item); // print the key
+//  console.log("credits");
+//  console.log(item.granted_credit);
+  var gc=item.granted_credit;
+  var address=item.address;
+  var amnt=gc/1000;
+//  console.log("amount in ether");
+//  console.log(amnt);
+  amnt=web3.toWei(amnt);
+//  console.log("amount in wei:");
+
+//  console.log(amnt);
+
+//  console.log("amount in int wei");
+  amnt=parseInt(amnt,10);
+//  console.log(amnt);
+//  console.log(address);
+msg="transaction sending..";
+self.setStatusPos(pos,msg).then(function () {
+  self.sendTokVal(address,amnt);
+})
+
+
+
+
     count++;
+
     // tell async that that particular element of the iterator is done
     if(arr.length == count) callback();
+
+
+
 
 }, function(err) {
     console.log('iterating done');
 })
 }).then(function () {
 
+  msg='done';
+  self.setStatusPos(pos,msg)
 
-     /**
-     return arr
-   }).then(function (arr) {
-     arr.forEach(function(entry) {
-        //   console.log(entry);
-
-       })
-       **/
    }).catch(function (err) {
       // Something bad happened, handle the error
       console.log(err);
