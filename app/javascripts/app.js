@@ -208,7 +208,7 @@ sendToken: function () {
   var to = $("#transfer_to").val();
 
   val=web3.toWei(val);
-  to=web3.toWei(val);
+//  to=web3.toWei(val);
 
 
   Token.deployed().then(function(instance){
