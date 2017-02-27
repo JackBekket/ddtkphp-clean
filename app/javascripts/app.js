@@ -1,5 +1,5 @@
 
-TODO : CONVERT FUNCTIOS.
+//TODO : CONVERT FUNCTIOS.
 
 
 
@@ -11,18 +11,18 @@ import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
 
 // Import our contract artifacts and turn them into usable abstractions.
-//import token_artifacts from '../../build/contracts/SimpleToken.json'
+import token_artifacts from '../../build/contracts/SimpleToken.json'
 
 // MetaCoin is our usable abstraction, which we'll use through the code below.
-//var MetaCoin = contract(metacoin_artifacts);
+var Token = contract(token_artifacts);
 
 //require syntax.
 // Require our contract artifacts and turn them into usable abstractions.
-var json = require("./build/contracts/SimpleToken.json");
+//var json = require("./build/contracts/SimpleToken.json");
 
 // Turn our contract into an abstraction
-var contract = require("truffle-contract");
-var SimpleToken = contract(json);
+//var contract = require("truffle-contract");
+//var SimpleToken = contract(json);
 
 // Step 3: Provision the contract with a web3 provider
 //SimpleToken.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
@@ -36,14 +36,14 @@ SimpleToken.deployed().then(function(deployed) {
 
 
 
-// var token = MyAdvancedToken.at(MyAdvancedToken.deployed_address);
-
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
 // For application bootstrapping, check out window.addEventListener below.
 var accounts;
 var account;
+var event
+
 
 var balance;
 // var tokend;
@@ -65,7 +65,7 @@ window.App = {
     var self = this;
 
     // Bootstrap the MetaCoin abstraction for Use.
-    SimpleToken.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
+    Token.setProvider(web3.currentProvider);
 
     // Get the initial account balance so it can be displayed.
     web3.eth.getAccounts(function(err, accs) {
@@ -92,37 +92,41 @@ window.App = {
 
     });
 
-
-    SimpleToken.deployed().then(function(instance) {
+/**
+    Token.deployed().then(function(instance) {
       MyTokenInstance=instance;
       });
 
 
 
 
-      $("#tokdAddress").html(SimpleToken.deployed_address);
 
-      console.log(myTokenInstance);
-      console.log(SimpleToken.deployed_address);
+**/
+
+//$("#tokdAddress").html(Token.deployed_address);
+
+
+//console.log(Token.deployed_address);
+
 
 
       //Set deci
       deci=18;
 
       //Set rules of transform numbers
-      DeciPow(deci);
+  //    DeciPow(deci);
 
           //Check Values
         //  checkValues();
 
           //Check Total Supply
-          totalSup();
+        //  totalSup();
 
          //refresh Balance
-          refreshBalance();
+        //  refreshBalance();
 
-
-
+//        There must be a functions that will be work onload
+          self.refreshAddress();
   },
 
   setStatus: function(message) {
@@ -130,51 +134,107 @@ window.App = {
     status.innerHTML = message;
   },
 
+  setStatusPos: function (pos, msg){
+  $(pos).html(msg);
 
-//Dummy ----------------------------------
-/**
-  refreshBalance: function() {
+  },
+
+refreshAddress: function () {
+  var self=this;
+  var instance;
+  var tok;
+  Token.deployed().then(function(instance) {
+    tok=instance;
+    $("#tokdAddress").html(tok.address);
+    console.log(tok.address);
+  });
+},
+
+  ShowSupply: function () {
     var self = this;
-
-    var meta;
-    MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.getBalance.call(account, {from: account});
-    }).then(function(value) {
-      var balance_element = document.getElementById("balance");
-      balance_element.innerHTML = value.valueOf();
-    }).catch(function(e) {
-      console.log(e);
-      self.setStatus("Error getting balance; see log.");
+    var pos="#totalSup";
+    var instance;
+    var msg;
+    var tok;
+    Token.deployed().then(function(instance){
+      tok=instance;
+      msg="Wait..";
+      self.setStatusPos(pos,msg);
+       return tok.totalSupply.call()
+        }).then(function (ts) {
+    //     $("#totalSup").html(ts)
+          console.log("ts:");
+          console.log(ts);
+        // Should I use msg=ts.valueOf(); ?
+          msg=ts;
+          self.setStatusPos(pos,msg);
     });
   },
 
-  sendCoin: function() {
-    var self = this;
 
-    var amount = parseInt(document.getElementById("amount").value);
-    var receiver = document.getElementById("receiver").value;
+hubBalance: function () {
+  var self=this;
+  var pos="#balance";
+  var instance;
+  var msg;
+  var tok;
+  Token.deployed().then(function(instance){
+    tok=instance;
+    msg="Wait..";
+    self.setStatusPos(pos,msg);
+     return tok.balanceOf(account)
+   }).then(function (tx) {
+  //     $("#totalSup").html(ts)
+        console.log("tx:");
+        console.log(tx);
+      // Should I use msg=ts.valueOf(); ?
+        msg=tx;
+        self.setStatusPos(pos,msg);
+  });
 
-    this.setStatus("Initiating transaction... (please wait)");
+},
 
-    var meta;
-    MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.sendCoin(receiver, amount, {from: account});
-    }).then(function() {
-      self.setStatus("Transaction complete!");
-      self.refreshBalance();
-    }).catch(function(e) {
+sendToken: function () {
+  var self=this;
+  var pos="#transfer_result";
+  var instance;
+  var msg;
+  var tok;
+  var val = $("#transfer_am").val();
+  var to = $("#transfer_to").val();
+
+  val=web3.toWei(val);
+  to=web3.toWei(val);
+
+
+  Token.deployed().then(function(instance){
+    tok=instance;
+    msg="Wait.."
+     return tok.transfer(to, val, {from: account})
+   }).then(function (tx) {
+  //     $("#totalSup").html(ts)
+        console.log("tx:");
+        console.log(tx);
+      // Should I use msg=ts.valueOf(); ?
+        msg="Transaction complete";
+        self.setStatusPos(pos,msg);
+  }).catch(function(e) {
       console.log(e);
-      self.setStatus("Error sending coin; see log.");
+
+     msg="Ошибка при отправке, смотри консоль";
+     setStatusPos(pos,msg);
     });
-  }
-**/
+}
 
 
 
 
 
+
+
+
+
+// End of window.App
 };
 
 window.addEventListener('load', function() {
@@ -196,6 +256,7 @@ window.addEventListener('load', function() {
 
 
 /**
+
 window.onload = function() {
 
 
@@ -239,7 +300,7 @@ DeciPow(deci);
 
    });
 //
-**/
+
 
 
 
@@ -425,3 +486,5 @@ myTokenInstance.transfer(to, val, { from: account}).then(
     setStatusPos(pos,msg);
    });
   }
+
+**/
