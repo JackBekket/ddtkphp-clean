@@ -224,6 +224,64 @@ sendToken: function () {
      msg="Ошибка при отправке, смотри консоль";
      setStatusPos(pos,msg);
     });
+},
+
+getAll: function () {
+
+  var self=this;
+  var pos="#AllResult";
+  var instance;
+  var msg;
+  var tok;
+
+
+  // (1)
+  var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+
+  var xhr = new XHR();
+
+  // (2) запрос на другой домен :)
+  xhr.open('GET', 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87', true);
+
+  xhr.onload = function() {
+  //  alert( this.responseText );
+  console.log(this.responseText);
+  }
+
+  xhr.onerror = function() {
+    alert( 'Ошибка ' + this.status );
+    console.log(this.status);
+  }
+
+  xhr.send();
+
+
+
+/**
+  var xmlhttp = getXmlHttp()
+  xmlhttp.open('GET', 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87', true);
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4) {
+       if(xmlhttp.status == 200) {
+        // alert(xmlhttp.responseText);
+        console.log(xmlhttp.responseText);
+           }
+    }
+  };
+  xmlhttp.send(null);
+**/
+
+
+/**
+  $.post(
+    "https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87",
+    parser
+  );
+  function parser(data) {
+    console.log(data);
+  };
+**/
+
 }
 
 
