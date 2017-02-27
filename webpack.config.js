@@ -1,6 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
+const request = require('request-promise') ;
 module.exports = {
   entry: './app/javascripts/app.js',
   output: {
@@ -13,6 +13,9 @@ module.exports = {
       { from: './app/index.html', to: "index.html" }
     ])
   ],
+  node: {
+    fs: "empty"
+  },
   module: {
     rules: [
       {

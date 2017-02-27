@@ -13,6 +13,10 @@ import { default as contract } from 'truffle-contract'
 // Import our contract artifacts and turn them into usable abstractions.
 import token_artifacts from '../../build/contracts/SimpleToken.json'
 
+
+
+const request = require('request-promise') ;
+
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 var Token = contract(token_artifacts);
 
@@ -235,26 +239,20 @@ getAll: function () {
   var tok;
 
 
-  // (1)
-  var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+  const options = {
+    method: 'GET',
+    uri: 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87'
+  };
 
-  var xhr = new XHR();
-
-  // (2) запрос на другой домен :)
-  xhr.open('GET', 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87', true);
-
-  xhr.onload = function() {
-  //  alert( this.responseText );
-  console.log(this.responseText);
-  }
-
-  xhr.onerror = function() {
-    alert( 'Ошибка ' + this.status );
-    console.log(this.status);
-  }
-
-  xhr.send();
-
+  request(options)
+    .then(function (response) {
+      // Request was successful, use the response object at will
+      console.log(response);
+    })
+    .catch(function (err) {
+      // Something bad happened, handle the error
+      console.log(err);
+    })
 
 
 /**
