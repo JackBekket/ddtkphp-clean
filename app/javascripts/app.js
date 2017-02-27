@@ -317,9 +317,9 @@ getAll: function () {
 //  console.log(amnt);
 //  console.log(address);
 msg="transaction sending..";
-self.setStatusPos(pos,msg).then(function () {
+self.setStatusPos(pos,msg);
   self.sendTokVal(address,amnt);
-})
+
 
 
 
