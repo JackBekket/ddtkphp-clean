@@ -16,8 +16,8 @@ contract SimpleToken is StandardToken {
   string public name = "SimpleToken";
   string public symbol = "SIM";
   uint public decimals = 18;
-  uint public INITIAL_SUPPLY = 10000;
-  
+  uint public INITIAL_SUPPLY = 10000 * 1 ether;
+
   function SimpleToken() {
     totalSupply = INITIAL_SUPPLY;
     balances[msg.sender] = INITIAL_SUPPLY;

@@ -94,26 +94,11 @@ window.App = {
 
     });
 
-/**
-    Token.deployed().then(function(instance) {
-      MyTokenInstance=instance;
-      });
-
-
-
-
-
-**/
-
-//$("#tokdAddress").html(Token.deployed_address);
-
-
-//console.log(Token.deployed_address);
 
 
 
       //Set deci
-      deci=18;
+  //    deci=18;
 
       //Set rules of transform numbers
   //    DeciPow(deci);
@@ -171,6 +156,7 @@ refreshAddress: function () {
           console.log(ts);
         // Should I use msg=ts.valueOf(); ?
           msg=ts.valueOf();
+          msg=web3.fromWei(msg);
           self.setStatusPos(pos,msg);
     });
   },
@@ -193,6 +179,7 @@ hubBalance: function () {
         console.log(tx);
       // Should I use msg=ts.valueOf(); ?
         msg=tx.valueOf();
+        msg=web3.fromWei(msg);
         self.setStatusPos(pos,msg);
   });
 
@@ -214,6 +201,7 @@ sendToken: function () {
   Token.deployed().then(function(instance){
     tok=instance;
     msg="Wait..";
+    /**
     console.log("instance:");
     console.log(instance);
     console.log("to:");
@@ -222,14 +210,14 @@ sendToken: function () {
     console.log(val);
     console.log("account:");
     console.log(account);
+    **/
      return tok.transfer(to, val, {from: account})
    }).then(function (tx) {
-  //     $("#totalSup").html(ts)
         console.log("tx:");
         console.log(tx);
-      // Should I use msg=ts.valueOf(); ?
         msg="Transaction complete";
         self.setStatusPos(pos,msg);
+        self.refreshAddress();
   }).catch(function(e) {
       console.log(e);
 
