@@ -9,11 +9,14 @@ import "../stylesheets/app.css";
 // Import libraries we need.
 import { default as Web3} from 'web3';
 import { default as contract } from 'truffle-contract'
+import each from 'async/each';
+
 
 // Import our contract artifacts and turn them into usable abstractions.
 import token_artifacts from '../../build/contracts/SimpleToken.json'
 
 
+const async = require('async');
 
 const request = require('request-promise') ;
 //var rp = request;
@@ -262,6 +265,21 @@ getAll: function () {
     arr=obj_name.object_name;
 
      self.setStatusPos(pos,msg);
+
+     var count=0;
+
+     async.forEach(arr, function (item, callback){
+    console.log(item); // print the key
+    count++;
+    // tell async that that particular element of the iterator is done
+    if(arr.length == count) callback();
+
+}, function(err) {
+    console.log('iterating done');
+})
+}).then(function () {
+
+
      /**
      return arr
    }).then(function (arr) {
