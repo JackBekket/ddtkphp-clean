@@ -83,6 +83,8 @@ window.App = {
       account = accounts[0];
 
         $("#transfer_to").val(accounts[1]);
+        console.log("accounts1");
+        console.log(accounts[1]);
 
 
 
@@ -147,6 +149,8 @@ refreshAddress: function () {
     tok=instance;
     $("#tokdAddress").html(tok.address);
     console.log(tok.address);
+    self.ShowSupply();
+    self.hubBalance();
   });
 },
 
@@ -166,7 +170,7 @@ refreshAddress: function () {
           console.log("ts:");
           console.log(ts);
         // Should I use msg=ts.valueOf(); ?
-          msg=ts;
+          msg=ts.valueOf();
           self.setStatusPos(pos,msg);
     });
   },
@@ -188,7 +192,7 @@ hubBalance: function () {
         console.log("tx:");
         console.log(tx);
       // Should I use msg=ts.valueOf(); ?
-        msg=tx;
+        msg=tx.valueOf();
         self.setStatusPos(pos,msg);
   });
 
@@ -209,7 +213,15 @@ sendToken: function () {
 
   Token.deployed().then(function(instance){
     tok=instance;
-    msg="Wait.."
+    msg="Wait..";
+    console.log("instance:");
+    console.log(instance);
+    console.log("to:");
+    console.log(to);
+    console.log("val");
+    console.log(val);
+    console.log("account:");
+    console.log(account);
      return tok.transfer(to, val, {from: account})
    }).then(function (tx) {
   //     $("#totalSup").html(ts)
