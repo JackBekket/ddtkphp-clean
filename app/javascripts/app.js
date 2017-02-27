@@ -16,7 +16,7 @@ import token_artifacts from '../../build/contracts/SimpleToken.json'
 
 
 const request = require('request-promise') ;
-
+//var rp = request;
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 var Token = contract(token_artifacts);
 
@@ -61,7 +61,7 @@ var balance;
  var am_root;
  var mroot;
 
-
+//var arr;
 
 
 window.App = {
@@ -235,14 +235,19 @@ getAll: function () {
   var self=this;
   var pos="#AllResult";
   var instance;
-  var msg;
+  var msg="waiting..";
   var tok;
 
-
+/**
+//---sync query
+//--dont forget to uncomment 'request' module.
   const options = {
     method: 'GET',
     uri: 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87'
   };
+  console.log(options);
+
+
 
   request(options)
     .then(function (response) {
@@ -253,33 +258,63 @@ getAll: function () {
       // Something bad happened, handle the error
       console.log(err);
     })
-
-
-/**
-  var xmlhttp = getXmlHttp()
-  xmlhttp.open('GET', 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87', true);
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4) {
-       if(xmlhttp.status == 200) {
-        // alert(xmlhttp.responseText);
-        console.log(xmlhttp.responseText);
-           }
-    }
-  };
-  xmlhttp.send(null);
 **/
 
 
-/**
+
+
+//Async query
+
   $.post(
     "https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87",
-    parser
-  );
-  function parser(data) {
-    console.log(data);
-  };
-**/
+   getter
+);
 
+
+
+
+  function getter(data) {
+    console.log(data);
+  //  print json_encode(data);
+  var res;
+  res=JSON.parse(data);
+  console.log(res);
+  console.log(res.Jobs);
+  var obj_name = res.Jobs;
+  var arr
+  arr=obj_name.object_name;
+  return arr;
+   self.setStatusPos(pos,msg);
+//   self.parseAll(arr);
+};
+
+
+
+
+
+},
+
+parseAll: function (arr) {
+  var self=this;
+  var pos="#AllResult";
+  var instance;
+  var msg="Initiating..";
+  var tok;
+
+  Token.deployed().then(function(instance){
+    tok=instance;
+    msg="Wait..";
+    self.setStatusPos(pos,msg)
+}).then(function () {
+  msg="parsing";
+  self.setStatusPos(pos,msg);
+  arr.forEach(function(entry) {
+        console.log(entry);
+    })
+}).then(function () {
+  msg="parsed";
+  self.setStatusPos(pos,msg);
+});
 }
 
 
