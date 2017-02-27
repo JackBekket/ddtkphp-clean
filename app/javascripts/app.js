@@ -238,9 +238,9 @@ getAll: function () {
   var msg="waiting..";
   var tok;
 
-/**
-//---sync query
-//--dont forget to uncomment 'request' module.
+
+
+//
   const options = {
     method: 'GET',
     uri: 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87'
@@ -250,21 +250,37 @@ getAll: function () {
 
 
   request(options)
-    .then(function (response) {
+    .then(function (data) {
       // Request was successful, use the response object at will
-      console.log(response);
-    })
-    .catch(function (err) {
+      console.log(data);
+    var res;
+    res=JSON.parse(data);
+    console.log(res);
+    console.log(res.Jobs);
+    var obj_name = res.Jobs;
+    var arr
+    arr=obj_name.object_name;
+
+     self.setStatusPos(pos,msg);
+     /**
+     return arr
+   }).then(function (arr) {
+     arr.forEach(function(entry) {
+        //   console.log(entry);
+
+       })
+       **/
+   }).catch(function (err) {
       // Something bad happened, handle the error
       console.log(err);
     })
-**/
+
 
 
 
 
 //Async query
-
+/**
   $.post(
     "https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87",
    getter
@@ -283,12 +299,12 @@ getAll: function () {
   var obj_name = res.Jobs;
   var arr
   arr=obj_name.object_name;
-  return arr;
+//  return arr;
    self.setStatusPos(pos,msg);
 //   self.parseAll(arr);
 };
 
-
+**/
 
 
 
