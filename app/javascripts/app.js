@@ -320,9 +320,36 @@ msg="transaction sending..";
 self.setStatusPos(pos,msg);
   self.sendTokVal(address,amnt);
 
+var id=item.id;
+console.log("id:");
+console.log(id);
+var wid=item.workunitid;
+console.log("wid");
+var hostid=item.hostid;
+console.log("hostid");
+console.log(hostid);
+var ampaid=amnt;
+ampaid=web3.fromWei(ampaid);
+console.log("ampaid");
+console.log(ampaid);
 
+const options2 = {
+  method: 'POST',
+  uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
+  body: {
+  id: id,
+  workunitid:wid,
+  hostid:hostid,
+  amount_paid:ampaid,
+  hello:'privet',
 
+},
+json: true
+  };
+//};
+console.log(options2);
 
+request(options2);
 
     count++;
 
@@ -337,7 +364,7 @@ self.setStatusPos(pos,msg);
 })
 }).then(function () {
 
-  msg='done';
+  msg='processing, see console..';
   self.setStatusPos(pos,msg)
 
    }).catch(function (err) {
