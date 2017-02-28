@@ -321,17 +321,17 @@ self.setStatusPos(pos,msg);
   self.sendTokVal(address,amnt);
 
 var id=item.id;
-console.log("id:");
-console.log(id);
+//console.log("id:");
+//console.log(id);
 var wid=item.workunitid;
-console.log("wid");
+//console.log("wid");
 var hostid=item.hostid;
-console.log("hostid");
-console.log(hostid);
+//console.log("hostid");
+//console.log(hostid);
 var ampaid=amnt;
 ampaid=web3.fromWei(ampaid);
-console.log("ampaid");
-console.log(ampaid);
+//console.log("ampaid");
+//console.log(ampaid);
 
 const options2 = {
   method: 'POST',
