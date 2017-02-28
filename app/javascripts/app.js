@@ -401,6 +401,26 @@ parseAll: function (arr) {
   msg="parsed";
   self.setStatusPos(pos,msg);
 });
+},
+
+
+sendJSON: function () {
+
+  const options = {
+    method: 'GET',
+    uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
+    body: {
+  foo: 'bar',
+  hello:'privet'
+},
+json: true
+  };
+  console.log(options);
+
+  request(options).then(function (data) {
+
+});
+
 }
 
 
