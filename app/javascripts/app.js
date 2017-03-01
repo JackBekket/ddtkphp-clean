@@ -400,12 +400,15 @@ function insSuccess(data) {
 
 
 
-
+/**
 $.post(
       "/proxy.php",
       {
         csurl:'https://boinc.drugdiscoveryathome.com/credits_get.php',
-        foo:'hello'
+        id:'1',
+        workunitid:'1',
+        hostid:'1',
+        amount_paid:'0'
       },
       insSuccess
       );
@@ -414,7 +417,7 @@ function insSuccess(data) {
   console.log("inserted");
   console.log(data);
 };
-
+**/
 
 }
 
