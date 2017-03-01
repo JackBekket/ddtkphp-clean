@@ -366,6 +366,10 @@ request(options2);
 // Test function to test connection with server
 sendJSON: function () {
 
+
+
+
+/**
   const options = {
     method: 'POST',
     uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
@@ -392,6 +396,25 @@ $.post(
 function insSuccess(data) {
   console.log("inserted");
 };
+**/
+
+
+
+
+$.post(
+      "/proxy.php",
+      {
+        csurl:'https://boinc.drugdiscoveryathome.com/credits_get.php',
+        foo:'hello'
+      },
+      insSuccess
+      );
+
+function insSuccess(data) {
+  console.log("inserted");
+  console.log(data);
+};
+
 
 }
 
