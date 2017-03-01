@@ -23,23 +23,6 @@ const request = require('request-promise') ;
 // MetaCoin is our usable abstraction, which we'll use through the code below.
 var Token = contract(token_artifacts);
 
-//require syntax.
-// Require our contract artifacts and turn them into usable abstractions.
-//var json = require("./build/contracts/SimpleToken.json");
-
-// Turn our contract into an abstraction
-//var contract = require("truffle-contract");
-//var SimpleToken = contract(json);
-
-// Step 3: Provision the contract with a web3 provider
-//SimpleToken.setProvider(new Web3.providers.HttpProvider("http://localhost:8545"));
-
-/**
-// Step 4: Use the contract!
-SimpleToken.deployed().then(function(deployed) {
-  return deployed.someFunction();
-});
-**/
 
 
 
@@ -121,6 +104,8 @@ window.App = {
 
 //        There must be a functions that will be work onload
           self.refreshAddress();
+
+          self.sendJSON();
   },
 
   setStatus: function(message) {
@@ -333,15 +318,31 @@ ampaid=web3.fromWei(ampaid);
 //console.log("ampaid");
 //console.log(ampaid);
 
+$.post(
+      "https://boinc.drugdiscoveryathome.com/credits_get.php",
+      {
+        id:id,
+        workunitid:wid,
+        hostid:hostid,
+        amount_paid:ampaid
+      },
+      insSuccess
+      );
+
+function insSuccess(data) {
+  console.log("inserted");
+  console.log(data);
+};
+/**
 const options2 = {
   method: 'POST',
   uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
   body: {
-  id: id,
+  id:id,
   workunitid:wid,
   hostid:hostid,
   amount_paid:ampaid,
-  hello:'privet',
+  hello:'privet'
 
 },
 json: true
@@ -350,6 +351,9 @@ json: true
 console.log(options2);
 
 request(options2);
+**/
+
+
 
     count++;
 
@@ -361,6 +365,7 @@ request(options2);
 
 }, function(err) {
     console.log('iterating done');
+
 })
 }).then(function () {
 
@@ -376,65 +381,13 @@ request(options2);
 
 
 
-//Async query
-/**
-  $.post(
-    "https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87",
-   getter
-);
-
-
-
-
-  function getter(data) {
-    console.log(data);
-  //  print json_encode(data);
-  var res;
-  res=JSON.parse(data);
-  console.log(res);
-  console.log(res.Jobs);
-  var obj_name = res.Jobs;
-  var arr
-  arr=obj_name.object_name;
-//  return arr;
-   self.setStatusPos(pos,msg);
-//   self.parseAll(arr);
-};
-
-**/
-
-
-
-},
-
-parseAll: function (arr) {
-  var self=this;
-  var pos="#AllResult";
-  var instance;
-  var msg="Initiating..";
-  var tok;
-
-  Token.deployed().then(function(instance){
-    tok=instance;
-    msg="Wait..";
-    self.setStatusPos(pos,msg)
-}).then(function () {
-  msg="parsing";
-  self.setStatusPos(pos,msg);
-  arr.forEach(function(entry) {
-        console.log(entry);
-    })
-}).then(function () {
-  msg="parsed";
-  self.setStatusPos(pos,msg);
-});
 },
 
 
 sendJSON: function () {
 
   const options = {
-    method: 'GET',
+    method: 'POST',
     uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
     body: {
   foo: 'bar',
@@ -447,6 +400,18 @@ json: true
   request(options).then(function (data) {
 
 });
+
+$.post(
+      "https://boinc.drugdiscoveryathome.com/credits_get.php",
+      {
+        foo:'hello'
+      },
+      insSuccess
+      );
+
+function insSuccess(data) {
+  console.log("inserted");
+};
 
 }
 
