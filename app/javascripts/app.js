@@ -1,5 +1,7 @@
 
 //TODO : CONVERT FUNCTIOS.
+//TODO : cleanup code
+//TODO : english translation for polish team
 
 
 
