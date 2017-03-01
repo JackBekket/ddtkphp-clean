@@ -2,7 +2,7 @@
 //TODO : CONVERT FUNCTIOS.
 //TODO : cleanup code
 //TODO : english translation for polish team
-
+//TODO : clean appendix
 
 
 // Import the page's CSS. Webpack will know what to do with it.
@@ -15,7 +15,7 @@ import each from 'async/each';
 
 
 // Import our contract artifacts and turn them into usable abstractions.
-import token_artifacts from '../../build/contracts/SimpleToken.json'
+import token_artifacts from '../../build/contracts/DrugDiscoveryToken.json'
 
 
 const async = require('async');
@@ -39,7 +39,7 @@ var event
 
 var balance;
 // var tokend;
- var MyTokenInstance;
+
 
  var senderWei;
  var recipientWei;
@@ -88,21 +88,6 @@ window.App = {
 
 
 
-
-      //Set deci
-  //    deci=18;
-
-      //Set rules of transform numbers
-  //    DeciPow(deci);
-
-          //Check Values
-        //  checkValues();
-
-          //Check Total Supply
-        //  totalSup();
-
-         //refresh Balance
-        //  refreshBalance();
 
 //        There must be a functions that will be work onload
           self.refreshAddress();
@@ -196,14 +181,7 @@ sendToken: function () {
     tok=instance;
     msg="Wait..";
     /**
-    console.log("instance:");
-    console.log(instance);
-    console.log("to:");
-    console.log(to);
-    console.log("val");
-    console.log(val);
-    console.log("account:");
-    console.log(account);
+
     **/
      return tok.transfer(to, val, {from: account})
    }).then(function (tx) {
@@ -385,7 +363,7 @@ request(options2);
 
 },
 
-
+// Test function to test connection with server
 sendJSON: function () {
 
   const options = {
