@@ -11,7 +11,7 @@ module.exports = function(deployer) {
 **/
 
 
-  deployer.deploy(SimpleToken);
+  deployer.deploy(DrugDiscoveryToken);
 
 
 

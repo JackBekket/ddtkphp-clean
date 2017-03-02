@@ -384,6 +384,8 @@ json: true
   request(options).then(function (data) {
 
 });
+**/
+
 
 $.post(
       "https://boinc.drugdiscoveryathome.com/credits_get.php",
@@ -396,7 +398,7 @@ $.post(
 function insSuccess(data) {
   console.log("inserted");
 };
-**/
+
 
 
 
