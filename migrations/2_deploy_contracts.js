@@ -1,7 +1,7 @@
 //var ConvertLib = artifacts.require("./ConvertLib.sol");
 //var MetaCoin = artifacts.require("./MetaCoin.sol");
 
-var SimpleToken=artifacts.require("DrugDiscoveryToken.sol");
+var DrugDiscoveryToken=artifacts.require("DrugDiscoveryToken.sol");
 module.exports = function(deployer) {
 
 /**
