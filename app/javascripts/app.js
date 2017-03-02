@@ -194,7 +194,7 @@ sendToken: function () {
       console.log(e);
 
      msg="Ошибка при отправке, смотри консоль";
-     setStatusPos(pos,msg);
+     self.setStatusPos(pos,msg);
     });
 },
 
@@ -369,24 +369,26 @@ sendJSON: function () {
 
 
 
-/**
+
   const options = {
     method: 'POST',
     uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
     body: {
-  foo: 'bar',
-  hello:'privet'
+      id:1,
+      workunitid:1,
+      hostid:1,
+      amount_paid:1
 },
 json: true
   };
   console.log(options);
 
   request(options).then(function (data) {
-
+console.log(data);
 });
-**/
 
 
+/**
 $.post(
       "https://boinc.drugdiscoveryathome.com/credits_get.php",
       {
@@ -398,7 +400,7 @@ $.post(
 function insSuccess(data) {
   console.log("inserted");
 };
-
+**/
 
 
 
