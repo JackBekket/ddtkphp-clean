@@ -18,7 +18,7 @@ contract DrugDiscoveryToken is StandardToken {
   uint public decimals = 18;
   uint public INITIAL_SUPPLY = 100000 * 1 ether;
 
-  function SimpleToken() {
+  function DrugDiscoveryToken() {
     totalSupply = INITIAL_SUPPLY;
     balances[msg.sender] = INITIAL_SUPPLY;
   }
