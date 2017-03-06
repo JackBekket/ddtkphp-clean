@@ -92,7 +92,7 @@ window.App = {
 //        There must be a functions that will be work onload
           self.refreshAddress();
 
-          self.sendJSON();
+      //    self.sendJSON();
   },
 
   setStatus: function(message) {
@@ -286,8 +286,9 @@ self.setStatusPos(pos,msg);
   self.sendTokVal(address,amnt);
 
 var id=item.id;
-//console.log("id:");
-//console.log(id);
+id=String(id);
+console.log("id:");
+console.log(id);
 var wid=item.workunitid;
 //console.log("wid");
 var hostid=item.hostid;
@@ -295,19 +296,33 @@ var hostid=item.hostid;
 //console.log(hostid);
 var ampaid=amnt;
 ampaid=web3.fromWei(ampaid);
-//console.log("ampaid");
-//console.log(ampaid);
+ampaid=String(ampaid);
+console.log("ampaid");
+console.log(ampaid);
 
-$.post(
-      "https://boinc.drugdiscoveryathome.com/credits_get.php",
-      {
-        id:id,
-        workunitid:wid,
-        hostid:hostid,
-        amount_paid:ampaid
-      },
-      insSuccess
-      );
+var jObj={id:id,
+amount_paid:ampaid};
+console.log(jObj);
+var jsn=JSON.stringify(jObj);
+console.log(jsn);
+
+
+$.ajax({
+  /**
+  beforeSend: function(xhrObj){
+        xhrObj.setRequestHeader("Content-Type","application/json");
+        xhrObj.setRequestHeader("Accept","application/json");
+    },
+    **/
+  url: "https://boinc.drugdiscoveryathome.com/credits_get.php",
+  type: "POST",
+  data: jsn,
+  dataType:'json',
+  contentType: "text/plain",
+  success: insSuccess
+});
+
+
 
 function insSuccess(data) {
   console.log("inserted");
@@ -368,60 +383,39 @@ sendJSON: function () {
 
 
 
+var jObj={id:'242183',
+amount_paid:'0,0012'};
+console.log(jObj);
+var jsn=JSON.stringify(jObj);
+console.log(jsn);
 
 
-  const options = {
-    method: 'POST',
-    uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
-    body: {
-      id:1,
-      workunitid:1,
-      hostid:1,
-      amount_paid:1
-},
-json: true
-  };
-  console.log(options);
 
-  request(options).then(function (data) {
-console.log(data);
+$.ajax({
+  /**
+  beforeSend: function(xhrObj){
+        xhrObj.setRequestHeader("Content-Type","application/json");
+        xhrObj.setRequestHeader("Accept","application/json");
+    },
+    **/
+  url: "https://boinc.drugdiscoveryathome.com/credits_get.php",
+  type: "POST",
+  data: jsn,
+  dataType:'json',
+  contentType: "text/plain",
+  success: insSuccess
 });
 
 
-/**
-$.post(
-      "https://boinc.drugdiscoveryathome.com/credits_get.php",
-      {
-        foo:'hello'
-      },
-      insSuccess
-      );
-
-function insSuccess(data) {
-  console.log("inserted");
-};
-**/
-
-
-
-/**
-$.post(
-      "/proxy.php",
-      {
-        csurl:'https://boinc.drugdiscoveryathome.com/credits_get.php',
-        id:'1',
-        workunitid:'1',
-        hostid:'1',
-        amount_paid:'0'
-      },
-      insSuccess
-      );
 
 function insSuccess(data) {
   console.log("inserted");
   console.log(data);
 };
-**/
+
+
+
+
 
 }
 

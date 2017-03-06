@@ -13,8 +13,8 @@ import "./StandardToken.sol";
  */
 contract DrugDiscoveryToken is StandardToken {
 
-  string public name = "DrugDiscoveryToken";
-  string public symbol = "DDT";
+  string public name = "ShulginToken";
+  string public symbol = "SHU";
   uint public decimals = 18;
   uint public INITIAL_SUPPLY = 100000 * 1 ether;
 
