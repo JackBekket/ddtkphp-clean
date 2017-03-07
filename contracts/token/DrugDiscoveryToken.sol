@@ -16,7 +16,7 @@ contract DrugDiscoveryToken is StandardToken {
   string public name = "ShulginToken";
   string public symbol = "SHU";
   uint public decimals = 18;
-  uint public INITIAL_SUPPLY = 100000 * 1 ether;
+  uint public INITIAL_SUPPLY = 1000000 * 1 ether;
 
   function DrugDiscoveryToken() {
     totalSupply = INITIAL_SUPPLY;
