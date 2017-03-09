@@ -533,6 +533,12 @@
       "links": {},
       "address": "0xa1748aaedbba0ebb6af5bbb67650c6c3a472ecfe",
       "updated_at": 1488814062348
+    },
+    "3": {
+      "events": {},
+      "links": {},
+      "address": "0x14c3b104742f82022ab595e2fa5e7abde688f180",
+      "updated_at": 1488814062348
     }
   },
   "schema_version": "0.0.5",
