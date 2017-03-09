@@ -151,7 +151,7 @@ hubBalance: function () {
     tok=instance;
     msg="Wait..";
     self.setStatusPos(pos,msg);
-     return tok.balanceOf(account)
+     return tok.balanceOf(account);
    }).then(function (tx) {
   //     $("#totalSup").html(ts)
         console.log("tx:");
@@ -213,7 +213,7 @@ sendTokVal: function (to,val) {
     tok=instance;
 //    msg="Wait..";
 
-     return tok.transfer(to, val, {from: account})
+     return tok.transfer(to, val, {from:account})
    }).then(function (tx) {
         console.log("tx:");
         console.log(tx);
@@ -328,25 +328,7 @@ function insSuccess(data) {
   console.log("inserted");
   console.log(data);
 };
-/**
-const options2 = {
-  method: 'POST',
-  uri: 'https://boinc.drugdiscoveryathome.com/credits_get.php',
-  body: {
-  id:id,
-  workunitid:wid,
-  hostid:hostid,
-  amount_paid:ampaid,
-  hello:'privet'
 
-},
-json: true
-  };
-//};
-console.log(options2);
-
-request(options2);
-**/
 
 
 
