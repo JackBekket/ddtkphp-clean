@@ -1,5 +1,5 @@
-var DrugDiscoveryToken=artifacts.require("DrugDiscoveryToken.sol");
+var Migrations = artifacts.require("./Migrations.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(DrugDiscoveryToken);
+  deployer.deploy(Migrations);
 };
