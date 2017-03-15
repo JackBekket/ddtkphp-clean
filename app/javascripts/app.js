@@ -27,8 +27,8 @@ var Token = contract(token_artifacts);
 
 
 
-var address=0x076d03B094a29D48aCD0A06ED817141D40d80fe8;
-console.log(address);
+//var address=0x076d03B094a29D48aCD0A06ED817141D40d80fe8;
+//console.log(address);
 
 // The following code is simple to show off interacting with your contracts.
 // As your needs grow you will likely need to change its form and structure.
@@ -110,7 +110,7 @@ refreshAddress: function () {
   var self=this;
   var instance;
   var tok;
-  Token.at(address).then(function(instance) {
+  Token.deployed().then(function(instance) {
     tok=instance;
     $("#tokdAddress").html(tok.address);
     console.log(tok.address);
@@ -125,7 +125,7 @@ refreshAddress: function () {
     var instance;
     var msg;
     var tok;
-    Token.at(address).then(function(instance){
+    Token.deployed().then(function(instance){
       tok=instance;
       msg="Wait..";
       self.setStatusPos(pos,msg);
@@ -148,7 +148,7 @@ hubBalance: function () {
   var instance;
   var msg;
   var tok;
-  Token.at(address).then(function(instance){
+  Token.deployed().then(function(instance){
     tok=instance;
     msg="Wait..";
     self.setStatusPos(pos,msg);
@@ -178,7 +178,7 @@ sendToken: function () {
 //  to=web3.toWei(val);
 
 
-  Token.at(address).then(function(instance){
+  Token.deployed().then(function(instance){
     tok=instance;
     msg="Wait..";
     /**
@@ -210,7 +210,7 @@ sendTokVal: function (to,val) {
 //  to=web3.toWei(val);
 
 
-  Token.at(address).then(function(instance){
+  Token.deployed().then(function(instance){
     tok=instance;
 //    msg="Wait..";
 
