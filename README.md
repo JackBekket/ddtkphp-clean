@@ -1,4 +1,9 @@
 # DrugDiscovery token project
+
+livenet address: 0xef510209f6Bc5176EAf82998f6eD6556edB51fA5
+
+(https://etherscan.io/address/0xef510209f6bc5176eaf82998f6ed6556edb51fa5)
+
 DrugDiscovery token project
 
 This repository contain a main data about ethereum token of drugdiscovery and a control system on php for it.
