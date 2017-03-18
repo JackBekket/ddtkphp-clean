@@ -38,4 +38,4 @@ Click to 'new token' and input address of it - 0xef510209f6Bc5176EAf82998f6eD655
 
 If you are use any other ethereum wallet which support interaction with contracts -
 you need to go 'watch contracts' section and input address of token - '0xef510209f6Bc5176EAf82998f6eD6556edB51fA5'
-and ABI of this contract. ABI could be found in this () file.
+and ABI of this contract. ABI could be found in this (https://github.com/sonm-io/drugdiscovery-token/blob/master/ABI-DD) file.
