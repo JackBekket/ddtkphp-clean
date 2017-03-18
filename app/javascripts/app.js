@@ -42,15 +42,7 @@ var balance;
 // var tokend;
 
 
- var senderWei;
- var recipientWei;
 
- var deci;
-
- var am_root;
- var mroot;
-
-//var arr;
 
 
 window.App = {
@@ -205,9 +197,6 @@ sendTokVal: function (to,val) {
   var instance;
   var msg;
   var tok;
-//  var amnt;
-//  val=web3.toWei(val);
-//  to=web3.toWei(val);
 
 
   Token.deployed().then(function(instance){
@@ -239,7 +228,7 @@ getAll: function () {
 
   self.setStatusPos(pos,msg);
 
-//
+
   const options = {
     method: 'GET',
     uri: 'https://boinc.drugdiscoveryathome.com/credits.php?appid=7&key=jjkcsd780987dschuds87'
@@ -280,8 +269,7 @@ getAll: function () {
 
 //  console.log("amount in int wei");
   amnt=parseInt(amnt,10);
-//  console.log(amnt);
-//  console.log(address);
+
 msg="transaction sending..";
 self.setStatusPos(pos,msg);
   self.sendTokVal(address,amnt);
@@ -291,7 +279,7 @@ id=String(id);
 console.log("id:");
 console.log(id);
 var wid=item.workunitid;
-//console.log("wid");
+
 var hostid=item.hostid;
 //console.log("hostid");
 //console.log(hostid);
