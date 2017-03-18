@@ -32,3 +32,10 @@ This module allow to automatically proceed all transaction requests from MySQL t
 2. ```truffle migrate --reset``` and ```npm run build``` in separate terminals, all other operations are the same.
 
 NOTE: if you will start this application from client side only it will throw crossdomain error.
+
+In Ethereum Foundation wallet or Mist browser you can simply add this token from contracts tab section:
+Click to 'new token' and input address of it - 0xef510209f6Bc5176EAf82998f6eD6556edB51fA5
+
+If you are use any other ethereum wallet which support interaction with contracts -
+you need to go 'watch contracts' section and input address of token - '0xef510209f6Bc5176EAf82998f6eD6556edB51fA5'
+and ABI of this contract. ABI could be found in this () file.
